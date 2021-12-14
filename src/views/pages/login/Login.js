@@ -31,8 +31,13 @@ export default function Login({ setToken }) {
       password
     });
     console.log(token)
-    setToken(token)
-    location.reload(true)
+    if (JSON.parse(token)["username"] === "admin" && JSON.parse(token)["password"] === "123") {
+      setToken(token)
+      location.reload(true)
+    }
+    else {
+      alert("Enter Correct Credentials")
+    }
   }
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
