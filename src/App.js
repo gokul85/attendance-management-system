@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import './scss/style.scss'
 
 const loading = (
@@ -34,7 +34,7 @@ function App() {
   if (!token) {
     return (
       <div>
-        <BrowserRouter>
+        <HashRouter>
           <React.Suspense fallback={loading}>
             <Switch>
               <Route
@@ -48,13 +48,13 @@ function App() {
               <Route path="/" name="Login Page" render={(props) => <Login setToken={setToken} />} />
             </Switch>
           </React.Suspense>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     )
   }
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <React.Suspense fallback={loading}>
           <Switch>
             <Route
@@ -68,7 +68,7 @@ function App() {
             <Route path="/" name="Home" render={(props) => <DefaultLayout {...props} />} />
           </Switch>
         </React.Suspense>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
