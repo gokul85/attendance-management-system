@@ -10,7 +10,7 @@ const AppBreadcrumb = () => {
 
   const getRouteName = (pathname, routes) => {
     const currentRoute = routes.find((route) => route.path === pathname)
-    return "https://gokul85.github.io/attendance-management-system/"
+    return currentRoute
   }
 
   const getBreadcrumbs = (location) => {
