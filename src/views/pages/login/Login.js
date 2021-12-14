@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import {
   CButton,
   CCard,
@@ -16,7 +17,23 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 
-const Login = () => {
+async function loginUser(credentials) {
+  return JSON.stringify(credentials)
+}
+
+export default function Login({ setToken }) {
+  const [username, setusername] = useState()
+  const [password, setpassword] = useState()
+
+  const handleSubmit = async e => {
+    const token = await loginUser({
+      username,
+      password
+    });
+    console.log(token)
+    setToken(token)
+    location.reload(true)
+  }
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -32,7 +49,10 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Username"
+                        onChange={(e) => setusername(e.target.value)}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -42,11 +62,12 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        onChange={(e) => setpassword(e.target.value)}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton color="primary" className="px-4" onClick={handleSubmit}>
                           Login
                         </CButton>
                       </CCol>
@@ -83,4 +104,6 @@ const Login = () => {
   )
 }
 
-export default Login
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+};

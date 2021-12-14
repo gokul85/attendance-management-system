@@ -1,18 +1,12 @@
 {
   "name": "@coreui/coreui-free-react-admin-template",
+  "homepage": "https://github.com/gokul85/attendance-management-system",
   "version": "4.1.1",
   "description": "CoreUI Free React Admin Template",
-  "homepage": ".",
-  "bugs": {
-    "url": "https://github.com/coreui/coreui-free-react-admin-template/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
-  },
   "license": "MIT",
-  "author": "The CoreUI Team (https://github.com/orgs/coreui/people)",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "build:n17": "react-scripts --openssl-legacy-provider build",
     "changelog": "auto-changelog --starting-version 4.1.0 --commit-limit false --hide-credit",
@@ -51,10 +45,7 @@
   },
   "devDependencies": {
     "auto-changelog": "~2.3.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "2.5.0",
+    "gh-pages": "^3.2.3",
     "react-scripts": "^4.0.3",
     "sass": "^1.43.5"
   },
